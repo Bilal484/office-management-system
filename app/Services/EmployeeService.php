@@ -26,7 +26,8 @@ use App\Imports\EmployeeImport;
 use App\Exports\EmployeeExport;
 use Excel;
 
-class EmployeeService{
+class EmployeeService
+{
     protected $roles;
     protected $employees;
     protected $roleEmployees;
@@ -65,7 +66,7 @@ class EmployeeService{
         IWorkShiftRepository $workShifts,
         IJobCategoryRepository $jobCategories,
         IEmployeeSalaryRepository $employeeSalaries
-    ){
+    ) {
         $this->roles = $roles;
         $this->employees = $employees;
         $this->roleEmployees = $roleEmployees;
@@ -86,31 +87,36 @@ class EmployeeService{
         $this->employeeSalaries = $employeeSalaries;
     }
 
-    public function all(){
+    public function all()
+    {
         return $this->employees->all();
     }
 
-    public function getRoles(){
+    public function getRoles()
+    {
         return $this->roles->all();
     }
 
-    public function avatar(Request $request){
+    public function avatar(Request $request)
+    {
         if ($request->hasFile('employee_photo')) {
             $image = $request->file('employee_photo');
             $file_name = $image->getClientOriginalName();
             $destinationPath = public_path('/employeesPhoto');
-            $image->move($destinationPath, $name);
-        }else{
-            $file_name = NULL;
+            $image->move($destinationPath, $file_name);
+        } else {
+            $file_name = null;
         }
         return $file_name;
     }
 
-    public function store(Request $request, $file_name){
+    public function store(Request $request, $file_name)
+    {
         return $this->employees->store($request, $file_name);
     }
 
-    public function downloadSample(){
+    public function downloadSample()
+    {
         $file_path = storage_path() . "/app/downloads/employee.csv";
         $headers = array(
             'Content-Type: csv',
@@ -118,177 +124,214 @@ class EmployeeService{
         );
         return [
             'file_exists' => file_exists($file_path),
-            'file_path'=> $file_path,
-            'headers'=>$headers
+            'file_path' => $file_path,
+            'headers' => $headers
         ];
     }
 
-    public function import(Request $request){
+    public function import(Request $request)
+    {
         $result = [];
         if ($request->hasFile('importEmployee')) {
             $extension = File::extension($request->importEmployee->getClientOriginalName());
             if ($extension == "csv") {
                 $path = $request->importEmployee->getRealPath();
                 $data = Excel::import(new EmployeeImport, $request->importEmployee);
-                if(!empty($data)){
-                    $result = ['result'=>true, 'status'=>'success','message'=>'Employees Data Imported!'];
-                }else{
-                    $result = ['result'=>false, 'status'=>'warning','message'=>'There is no data in csv file!'];
+                if (!empty($data)) {
+                    $result = ['result' => true, 'status' => 'success', 'message' => 'Employees Data Imported!'];
+                } else {
+                    $result = ['result' => false, 'status' => 'warning', 'message' => 'There is no data in csv file!'];
                 }
-            }else{
-                $result = ['result'=>false, 'status'=>'warning','message'=>'Selected file is not csv!'];
+            } else {
+                $result = ['result' => false, 'status' => 'warning', 'message' => 'Selected file is not csv!'];
             }
-        }else{
-            $result = ['result'=>false, 'status'=>'warning','message'=>'Something went wrong!'];
+        } else {
+            $result = ['result' => false, 'status' => 'warning', 'message' => 'Something went wrong!'];
         }
         return $result;
     }
 
-    public function role(Request $request, $employee){
+    public function role(Request $request, $employee)
+    {
         $role_employee = $this->roleEmployees->store($request, $employee);
         return [
-            'result'=>$role_employee['result'],
-            'role_employee'=>$role_employee['role_employee']
+            'result' => $role_employee['result'],
+            'role_employee' => $role_employee['role_employee']
         ];
     }
 
-    public function getTerminate(){
+    public function getTerminate()
+    {
         return $this->employees->getTerminate();
     }
 
-    public function checkAttachmentsExistsById($id){
+    public function checkAttachmentsExistsById($id)
+    {
         return $this->employeeAttachments->checkAttachmentsExistsById($id);
     }
 
-    public function getAttachmentById($id){
+    public function getAttachmentById($id)
+    {
         return $this->employeeAttachments->getAttachmentById($id);
     }
 
-    public function checkSupervisorsExists($id){
+    public function checkSupervisorsExists($id)
+    {
         return $this->employeeSupervisors->checkSupervisorsExistsById($id);
     }
 
-    public function getSupervisoryById($id){
+    public function getSupervisoryById($id)
+    {
         return $this->employeeSupervisors->getSupervisoryById($id);
     }
 
-    public function checkSubordinatesExists($id){
+    public function checkSubordinatesExists($id)
+    {
         return $this->employeeSubordinates->checkSubordinatesExists($id);
     }
 
-    public function getSubordinateById($id){
+    public function getSubordinateById($id)
+    {
         return $this->employeeSubordinates->getSubordinateById($id);
     }
 
-    public function getDepartments(){
+    public function getDepartments()
+    {
         return $this->departments->all();
     }
 
-    public function checkDepositExists($id){
+    public function checkDepositExists($id)
+    {
         return $this->employeeDeposits->checkDepositExists($id);
     }
 
-    public function getDepositById($id){
+    public function getDepositById($id)
+    {
         return $this->employeeDeposits->getDepositById($id);
     }
 
-    public function storeDepositById($id){
+    public function storeDepositById($id)
+    {
         return $this->employeeDeposits->storeDepositById($id);
     }
 
-    public function checkLoginExists($id){
+    public function checkLoginExists($id)
+    {
         return $this->employeeLogins->checkLoginExists($id);
     }
 
-    public function getLoginById($id){
+    public function getLoginById($id)
+    {
         return $this->employeeLogins->getLoginById($id);
     }
 
-    public function storeLogin($id, $f_name){
+    public function storeLogin($id, $f_name)
+    {
         return $this->employeeLogins->storeLogin($id, $f_name);
     }
 
-    public function update(Request $request, $id, $file_name){
+    public function update(Request $request, $id, $file_name)
+    {
         return $this->employees->update($request, $id, $file_name);
     }
 
-    public function deleteRoleById($id){
+    public function deleteRoleById($id)
+    {
         return $this->roleEmployees->destroy($id);
     }
 
-    public function updatePassword($password, $id){
+    public function updatePassword($password, $id)
+    {
         return $this->employees->updatePassword($password, $id);
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         return $this->employees->destroy($id);
     }
 
-    public function checkContactDetailExists($id){
+    public function checkContactDetailExists($id)
+    {
         return $this->contactDetails->checkContactDetailExists($id);
     }
 
-    public function getContactDetailById($id){
+    public function getContactDetailById($id)
+    {
         return $this->contactDetails->getContactDetailById($id);
     }
 
-    public function storeContactDetailById($id){
+    public function storeContactDetailById($id)
+    {
         return $this->contactDetails->storeContactDetailById($id);
     }
 
-    public function checkDependentExists($id){
+    public function checkDependentExists($id)
+    {
         return $this->employeeDependents->checkDependentExists($id);
     }
 
-    public function getDependentById($id){
+    public function getDependentById($id)
+    {
         return $this->employeeDependents->getDependentById($id);
     }
 
-    public function checkCommencementExists($id){
+    public function checkCommencementExists($id)
+    {
         return $this->employeeCommencements->checkCommencementExists($id);
     }
 
-    public function getCommencementById($id){
+    public function getCommencementById($id)
+    {
         return $this->employeeCommencements->getCommencementById($id);
     }
 
-    public function storeCommencementById($id){
+    public function storeCommencementById($id)
+    {
         return $this->employeeCommencements->storeCommencementById($id);
     }
 
-    public function checkJobHistoryExists($id){
+    public function checkJobHistoryExists($id)
+    {
         return $this->jobHistories->checkJobHistoryExists($id);
     }
 
-    public function getJobHistoryById($id){
+    public function getJobHistoryById($id)
+    {
         return $this->jobHistories->getJobHistoryById($id);
     }
 
-    public function getStatuses(){
+    public function getStatuses()
+    {
         return $this->employeeStatuses->all();
     }
 
-    public function getJobTitles(){
+    public function getJobTitles()
+    {
         return $this->jobTitles->all();
     }
 
-    public function getWorkShifts(){
+    public function getWorkShifts()
+    {
         return $this->workShifts->all();
     }
 
-    public function getJobCategories(){
+    public function getJobCategories()
+    {
         return $this->jobCategories->all();
     }
 
-    public function checkSalaryExists($id){
+    public function checkSalaryExists($id)
+    {
         return $this->employeeSalaries->checkSalaryExists($id);
     }
 
-    public function getSalaryById($id){
+    public function getSalaryById($id)
+    {
         return $this->employeeSalaries->getSalaryById($id);
     }
 
-    public function storeSalaryById($id){
+    public function storeSalaryById($id)
+    {
         return $this->employeeSalaries->storeSalaryById($id);
     }
 }
