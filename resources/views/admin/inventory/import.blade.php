@@ -11,7 +11,7 @@
 @section('content')
 <div class="main-content">
     <div class="page-header">
-        <h3 class="page-title">INVENTORY <small class="text-muted">management</small></h3>
+        <h3 class="page-title">Project <small class="text-muted">management</small></h3>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
             <li class="breadcrumb-item active"><a href="{{ route('inventory.import') }}">Import Inventory Excel(csv)</a></li>
@@ -22,7 +22,7 @@
             <div class="card">
                 <div class="card-header bg-info">
                     <div class="caption">
-                        <h6>Import csv inventories</h6>
+                        <h6>Import csv Projects</h6>
                     </div>
                 </div>
                 <div class="card-body">

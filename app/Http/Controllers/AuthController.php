@@ -2,13 +2,13 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\Http\Requests;
 use App\User;
-use Socialite;
-use Illuminate\Support\Facades\Log;
+use App\Http\Requests;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Log;
 use App\Providers\RouteServiceProvider;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class AuthController extends Controller
 {
@@ -56,7 +56,7 @@ class AuthController extends Controller
         Log::info(json_encode($provider_user));
         $user = $this->findUserByProviderOrCreate($provider, $provider_user);
         auth()->login($user);
-        flash('Welcome to Buzzer Office.')->success();
+        flash('Welcome to  Codesinc Office.')->success();
 
         return redirect()->to('/admin');
     }

@@ -110,7 +110,7 @@
                     <div class="row">
                         <div class="col-sm-10 col-lg-10">
                             <h5>
-                                 Buzzer Office
+                                Codesinc Office
                             </h5>
                         </div>
                         <div class="col-sm-2 col-lg-2">

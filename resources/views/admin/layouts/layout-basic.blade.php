@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Buzzer Office</title>
+    <title>  Codesinc Office</title>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
     <script src="{{asset('/assets/admin/js/core/pace.js')}}"></script>
     <link href="{{ asset('/assets/admin/css/laraspace.css') }}" rel="stylesheet" type="text/css">

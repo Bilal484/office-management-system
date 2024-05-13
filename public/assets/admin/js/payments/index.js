@@ -39,7 +39,7 @@ $('.show_payment').click(function(){
         }
         $('#payment_ref').text(data['reference_no']);
         $('#office_address').append(
-            'From: <br><h4>Buzzer Office</h4>67, Ayer Rajah Crescent, #07-21/26<br>Phone: { phonenumber }<br>Email:rujyi@hotmail.com'
+            'From: <br><h4>  Codesinc Office </h4>67, Ayer Rajah Crescent, #07-21/26<br>Phone: { phonenumber }<br>Email:rujyi@hotmail.com'
         );
         $('#payment_received').text(data['received_amt']);
         $('#payment_type').text(data['payment_method']);

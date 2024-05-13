@@ -2,14 +2,14 @@
 
 namespace App\Services;
 
-use App\Repositories\Interfaces\IInventoryRepository;
-use App\Repositories\Interfaces\ICategoryRepository;
-use App\Repositories\Interfaces\ITaxRepository;
-use Illuminate\Http\Request;
-use App\Inventory;
-use App\Imports\InventoryImport;
 use File;
-use Excel;
+use App\Inventory;
+use Illuminate\Http\Request;
+use App\Imports\InventoryImport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Repositories\Interfaces\ITaxRepository;
+use App\Repositories\Interfaces\ICategoryRepository;
+use App\Repositories\Interfaces\IInventoryRepository;
 
 class InventoryService{
     protected $inventories;
@@ -116,7 +116,7 @@ class InventoryService{
             foreach($request->inventory as $id){
                 $result = $this->inventories->destroy((int)$id);
             }
-            return ['result'=>$result, 'status'=>'success','message'=>'Inventory Data Deleted'];
+            return ['result'=>$result, 'status'=>'success','message'=>'Project Data Deleted'];
         }else{
             return ['result'=>$result, 'status'=>'fail','message'=>'Something went wrong'];
         }

@@ -12,7 +12,7 @@
                 Are you sure?
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-danger">Delete Inventory</button>
+                <button type="submit" class="btn btn-danger">Delete Project</button>
             </div>
         </form>
     </div>

@@ -134,7 +134,7 @@ The overall features or modules in this projecet are:
     - [x] New Purchase
     - [x] Purchase List
     - [x] Received Product
-- [x] Product and Services
+- [x] Projects 
     - [x] Product List
     - [x] Import Product
     - [x] Category

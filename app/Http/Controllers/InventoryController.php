@@ -66,6 +66,8 @@ class InventoryController extends Controller
      */
     public function store(Request $request)
     {
+
+        // dd($request);
         $this->validate($request, [
             'p_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -74,7 +76,7 @@ class InventoryController extends Controller
         $result = $this->inventories->store($request, $file_name);
         
         if($result['result']){
-            flash()->success('Inventory Inserted Successfully!');
+            flash()->success('Project  Inserted Successfully!');
         }else{
             flash()->error('Something went wrong!');
         }
@@ -120,9 +122,9 @@ class InventoryController extends Controller
         ]);
         $file_name = $this->inventories->getFileName($request);
         $result = $this->inventories->update($request, $file_name, $inventory->id);
-        
+
         if($result['result']){
-            flash()->success('Inventory Data Updated!');
+            flash()->success('Project  Data Updated!');
         }else{
             flash()->error('Something went wrong!');
         }

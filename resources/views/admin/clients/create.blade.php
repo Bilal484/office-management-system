@@ -40,14 +40,14 @@
                     <div class="col-md-6">
                         <!-- /.Start Date -->
                         <div class="form-group form-group-bottom">
-                            <label>Fax</label>
+                            <label>Meetings</label>
                             <input type="text" name="fax" class="form-control input-md inp_fax" value="">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <!-- /.Start Date -->
+                        <!-- /.Start Date --> 
                         <div class="form-group form-group-bottom">
                             <label>Email</label>
                             <input type="text" name="email" class="form-control input-md inp_email" value="">
@@ -57,12 +57,12 @@
                     <div class="col-md-6">
                         <!-- /.Start Date -->
                         <div class="form-group form-group-bottom">
-                            <label>Website</label>
+                            <label>Project Name</label>
                             <input type="text" name="website" class="form-control input-md inp_website" value="">
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Billing Address</label>
@@ -76,7 +76,7 @@
                             <textarea class="form-control inp_s_address" name="s_address"></textarea>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="row">
                     <div class="col-md-12">

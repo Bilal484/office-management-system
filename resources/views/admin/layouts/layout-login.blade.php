@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Buzzer Office</title>
+    <title>Codesinc Office</title>
     <link href="{{ asset('/assets/admin/css/laraspace.css') }}" rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -19,8 +19,8 @@
         </div> -->
         @yield('content')
         <div class="page-copyright">
-            <p>Powered by <a href="#" target="_blank">Phonist</a></p>
-            <p>Phonist © {{ date('Y') }}</p>
+            <p>Powered by <a href="#" target="_blank">Codesinc</a></p>
+            <p>Codesinc © {{ date('Y') }}</p>
         </div>
     </div>
 </div>

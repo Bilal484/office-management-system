@@ -1,164 +1,102 @@
-<div class="modal-dialog modal-lg" role="document">
+<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
         <div class="modal-header bg-info">
-            <h5 class="modal-title" id="exampleModalLabel">Edit Inventory Product</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Edit Project</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <form action="" id="form-inventory" enctype="multipart/form-data" method="post">
-            @method('PUT')
+        <form action="{{ route('inventory.update', ['inventory' => $inventory->id]) }}" method="POST">
             @csrf
+            @method('PUT')
             <div class="modal-body">
-
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Name<span class="required" aria-required="true">*</span></label>
-                                    <input id="inp_name" type="text" name="name" value="" class="form-control input-md">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <!-- /.Start Date -->
-                                <div class="form-group form-group-bottom">
-                                    <label>Part/ Model No <span class="required" aria-required="true">*</span></label>
-                                    <input id="inp_model_no" type="text" name="model_no" class="form-control input-md"
-                                        value="">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <!-- /.Start Date -->
-                                <div class="form-group form-group-bottom">
-                                    <label>In House Part No <span class="required" aria-required="true">*</span></label>
-                                    <input id="inp_house_no" type="text" name="in_house" class="form-control input-md"
-                                        value="">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Category <span class="required" aria-required="true">*</span></label>
-                                    <select id="inp_category" class="form-control input-md ls-select2" name="category"
-                                        style="width: 50%;">
-                                        @if (!$categories->isEmpty())
-                                        @foreach($categories as $category)
-                                        <option value="{{ $category->id}}">
-                                            {{ $category->name }}</option>
-                                        @endforeach
-                                        @else
-                                        <option value="">Please Select</option>
-                                        @endif
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-6">
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Product Image <span class="required" aria-required="true">*</span></label>
-                                    <div class="row">
-                                        <div class="col-xs-6 col-md-3">
-                                            <div class="image-upload">
-                                                <label for="file-input">
-                                                    <div class="thumbnail" style="cursor:pointer">
-                                                        <img id="edit_p_image" src="" width="120" height="120" alt=""
-                                                            style="pointer-events: none">
-                                                    </div>
-                                                </label>
-                                                <input id="file-input" type="file" name="edited_p_img">
-                                            </div>
-                                        </div>
-
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Project Name<span class="required" aria-required="true">*</span></label>
+                                        <input id="inp_p_name" type="text" name="p_name" value="" class="form-control input-md">
                                     </div>
-
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group form-group-bottom">
+                                        <label>Project Owner <span class="required" aria-required="true">*</span></label>
+                                        <input id="inp_p_owner" type="text" name="p_owner" class="form-control input-md" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group form-group-bottom">
+                                        <label>Country <span class="required" aria-required="true">*</span></label>
+                                        <input id="inp_Country" type="text" name="Country" class="form-control input-md" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Category <span class="required" aria-required="true">*</span></label>
+                                        <select id="inp_category" class="form-control input-md ls-select2" name="category" style="width: 50%;">
+                                            @if (!$categories->isEmpty())
+                                                @foreach ($categories as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @endforeach
+                                            @else
+                                                <option value="">Please Select</option>
+                                            @endif
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group form-group-bottom">
+                                        <label>Total Budget <span class="required" aria-required="true">*</span></label>
+                                        <input id="inp_total_budget" type="text" name="total_budget" placeholder="0.00" class="form-control input-md" value="" required>
+                                    </div>
                                 </div>
                             </div>
-
                         </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="row">
-
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Sales price/rate</label>
-                            <input id="inp_s_cost" type="number" min="0.01" step="0.01" name="sales_cost" class="form-control input-md" value="">
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Sales information</label>
-                            <textarea id="inp_s_info" class="form-control input-md" name="sales_info"></textarea>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Cost</label>
-                            <input id="inp_p_cost" type="number" min="0.01" step="0.01" name="buying_cost" class="form-control input-md" value="">
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Purchasing information</label>
-                            <textarea id="inp_p_info" class="form-control input-md" name="buying_info"></textarea>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Milestone</label>
+                                        <textarea id="inp_get_budget" type="text" name="get_budget" placeholder="Milestone Details" class="form-control input-md"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Remaining Amount</label>
+                                        <textarea id="inp_ramain_budget" class="form-control input-md" name="ramain_budget" placeholder="0.00"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Meeting</label>
+                                        <input id="inp_meeting" type="text" name="meeting" class="form-control input-md" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Date</label>
+                                        <input id="inp_start_time" type="date" name="start_time" class="form-control input-md" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Dead Line</label>
+                                        <input id="inp_deadline" type="date" name="deadline" class="form-control input-md" value="">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
                 </div>
-
-                <div class="form-group">
-                    <label>Tax <span class="required" aria-required="true">*</span></label>
-
-                    <select id="inp_tax" class="form-control input-md ls-select2" name="tax" style="width: 30%;">
-                        @if (!$taxes->isEmpty())
-                        @foreach($taxes as $tax)
-                        <option value="{{ $tax->id}}">
-                            {{ $tax->rate }}</option>
-                        @endforeach
-                        @else
-                            <option value="">Please Select..</option>
-                        @endif
-                    </select>
-                </div>
-
-
-                <div class="form-group quantity">
-                    <label>Quantity on hand <span class="required" aria-required="true">*</span></label>
-                    <input id="inp_quantity" type="text" name="inventory" class="form-control input-md" value="">
-                </div>
-
-
-
-
-
-
             </div>
             <div class="modal-footer">
                 <input type="hidden" name="id" value="">
                 <input type="hidden" name="type" value="Inventory">
 
-                <button class="btn btn-primary" type="submit" value="Submit"><i class="fa fa-save"></i>
-                    Update Inventory Product</button>
+                <button class="btn btn-primary" type="submit" value="Submit"><i class="fa fa-save"></i> Update Project</button>
             </div>
-        </form>
         </form>
     </div>
 </div>

@@ -2,29 +2,29 @@
 
 namespace App\Services;
 
+use File;
+use Illuminate\Http\Request;
+use App\Exports\EmployeeExport;
+use App\Imports\EmployeeImport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Repositories\Interfaces\IRoleRepository;
 use App\Repositories\Interfaces\IEmployeeRepository;
+use App\Repositories\Interfaces\IJobTitleRepository;
+use App\Repositories\Interfaces\IWorkShiftRepository;
+use App\Repositories\Interfaces\IDepartmentRepository;
+use App\Repositories\Interfaces\IJobHistoryRepository;
+use App\Repositories\Interfaces\IJobCategoryRepository;
 use App\Repositories\Interfaces\IRoleEmployeeRepository;
+use App\Repositories\Interfaces\IContactDetailRepository;
+use App\Repositories\Interfaces\IEmployeeLoginRepository;
+use App\Repositories\Interfaces\IEmployeeSalaryRepository;
+use App\Repositories\Interfaces\IEmployeeStatusRepository;
+use App\Repositories\Interfaces\IEmployeeDepositRepository;
+use App\Repositories\Interfaces\IEmployeeDependentRepository;
 use App\Repositories\Interfaces\IEmployeeAttachmentRepository;
 use App\Repositories\Interfaces\IEmployeeSupervisorRepository;
 use App\Repositories\Interfaces\IEmployeeSubordinateRepository;
-use App\Repositories\Interfaces\IDepartmentRepository;
-use App\Repositories\Interfaces\IEmployeeDepositRepository;
-use App\Repositories\Interfaces\IEmployeeLoginRepository;
-use App\Repositories\Interfaces\IContactDetailRepository;
-use App\Repositories\Interfaces\IEmployeeDependentRepository;
 use App\Repositories\Interfaces\IEmployeeCommencementRepository;
-use App\Repositories\Interfaces\IJobHistoryRepository;
-use App\Repositories\Interfaces\IEmployeeStatusRepository;
-use App\Repositories\Interfaces\IJobTitleRepository;
-use App\Repositories\Interfaces\IWorkShiftRepository;
-use App\Repositories\Interfaces\IJobCategoryRepository;
-use App\Repositories\Interfaces\IEmployeeSalaryRepository;
-use Illuminate\Http\Request;
-use File;
-use App\Imports\EmployeeImport;
-use App\Exports\EmployeeExport;
-use Excel;
 
 class EmployeeService
 {

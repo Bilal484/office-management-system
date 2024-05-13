@@ -29,7 +29,7 @@
                 <h1>Under Maintenance</h1>
                 <h5>PLEASE GIVE US A MOMENT TO SORT THINGS OUT</h5>
                 
-                <p> Powered by <a href="https://github.com/phonist" target="_blank">Phonist</a> </p>
+                {{-- <p> Powered by <a href="https://github.com/phonist" target="_blank">Phonist</a> </p> --}}
                 
                 <div class="social-icons">
                     <a href="{{ url('/auth/facebook') }}" class="btn btn-default text-primary btn-icon"><i class="icon-fa icon-fa-facebook"></i></a>

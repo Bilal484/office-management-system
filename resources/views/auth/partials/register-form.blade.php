@@ -1,5 +1,8 @@
 <form action="" id="registerForm" method="post">
-    {{csrf_field()}}
+    {{ csrf_field() }}
+    <div class="form-group">
+        <input type="text" class="form-control" name="name" placeholder="Enter name">
+    </div>
     <div class="form-group">
         <input type="email" class="form-control" name="email" placeholder="Enter email">
     </div>
